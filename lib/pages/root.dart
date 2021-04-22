@@ -4,6 +4,8 @@ import 'package:tiktok/theme/color.dart';
 import 'package:tiktok/widgets/tiktok.dart';
 import 'package:tiktok/widgets/upload_icon.dart';
 
+import 'cameraPage.dart';
+
 class Root extends StatefulWidget {
   @override
   _RootState createState() => _RootState();
@@ -14,6 +16,25 @@ class _RootState extends State<Root> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        title: Text(""),
+        actions: [
+          IconButton(
+            color: Colors.white,
+            icon: Icon(
+              Icons.camera_alt,
+              size: 35,
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CameraPage()));
+            },
+          ),
+        ],
+      ),
       bottomNavigationBar: getFooter(),
       body: getBody(),
     );
@@ -24,33 +45,6 @@ class _RootState extends State<Root> {
       index: pageIndex,
       children: [
         Home(),
-        Center(
-          child: Text(
-            "Discover",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        Center(
-          child: Text(
-            "Upload",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        Center(
-          child: Text(
-            "All Activity",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
         Center(
           child: Text(
             "Profile",
@@ -68,10 +62,7 @@ class _RootState extends State<Root> {
     var size = MediaQuery.of(context).size;
     List bottomItem = [
       {"icon": TikTokIcons.home, "label": "Home", "isIcon": true},
-      {"icon": TikTokIcons.search, "label": "Discover", "isIcon": true},
-      {"icon": TikTokIcons.heart, "label": "Inbox", "isIcon": false},
-      {"icon": TikTokIcons.heart, "label": "Inbox", "isIcon": true},
-      {"icon": TikTokIcons.profile, "label": "Home", "isIcon": true},
+      {"icon": TikTokIcons.profile, "label": "Profile", "isIcon": true},
     ];
     return Container(
       width: double.infinity,
@@ -85,7 +76,7 @@ class _RootState extends State<Root> {
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: List.generate(bottomItem.length, (index) {
             return bottomItem[index]["isIcon"]
                 ? InkWell(

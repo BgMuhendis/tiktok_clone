@@ -25,6 +25,11 @@ dependencies:
     sdk: flutter
   line_icons:
   video_player: ^1.0.1
+  path_provider: ^1.6.8
+  open_file: ^3.0.1
+  camera: ^0.5.7+2
+
+  
 
 
   # The following adds the Cupertino Icons font to your application.

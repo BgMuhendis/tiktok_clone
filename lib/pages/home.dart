@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:tiktok/constant/data.dart';
+import 'package:tiktok/pages/cameraPage.dart';
 import 'package:tiktok/theme/color.dart';
 import 'package:tiktok/widgets/icon_widgets.dart';
 import 'package:tiktok/widgets/tiktok.dart';
@@ -89,8 +90,8 @@ class VideoPlayerItem extends StatefulWidget {
   _VideoPlayerItemState createState() => _VideoPlayerItemState();
 }
 
-class _VideoPlayerItemState extends State<VideoPlayerItem> with SingleTickerProviderStateMixin
-     {
+class _VideoPlayerItemState extends State<VideoPlayerItem>
+    with SingleTickerProviderStateMixin {
   VideoPlayerController _videoController;
   @override
   void initState() {
@@ -140,7 +141,6 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> with SingleTickerProv
                     ),
                     child: Column(
                       children: [
-                        
                         Flexible(
                           child: Row(
                             children: [
@@ -196,19 +196,20 @@ class RightPanel extends StatelessWidget {
       child: Container(
         height: size.height,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              height: size.height * 0.3,
+              height: size.height * 0.1,
             ),
             Expanded(
               child: Container(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    // getProfile(profileImg),
                     getIcon(TikTokIcons.heart, 35.0, likes),
                     SizedBox(height: 40),
-                    // getIcon(TikTokIcons.chat_bubble, 35.0, comments),
+                    // getIcon(Icon(Icons.camera), 35.0, comments),
                     getIcon(TikTokIcons.reply, 25.0, shares),
                     SizedBox(height: 10),
 
@@ -266,5 +267,3 @@ class LettPanel extends StatelessWidget {
     );
   }
 }
-
-
